@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mogno-secret
-  namespace: go-blog
 type: Opaque
 data:
   MONGO_INITDB_ROOT_USERNAME: V2VuVGVl
