@@ -6,6 +6,6 @@ resources:
   - namespace.yaml
   - ../../base
 
-namespace: dev
+namespace: prd
 
 namePrefix: local-
