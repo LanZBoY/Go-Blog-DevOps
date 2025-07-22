@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: dev-
+
+resources:
+  - ../base
+
+images:
+  - name: go-blog-api
+    newTag: go-blog-api:dev-20250722T024931Z
+  - name: mongo
+    newTag: latest

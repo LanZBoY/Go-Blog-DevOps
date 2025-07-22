@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: mongo-db
-        image: mongo:latest
+        image: mongo
         resources:
           requests:
             memory: "64Mi"
