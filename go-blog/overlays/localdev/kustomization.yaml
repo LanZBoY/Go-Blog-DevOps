@@ -6,6 +6,6 @@ resources:
   - namespace.yaml
   - ../../base
 
-namespace: go-blog
+namespace: localdev
 
-namePrefix: first
+namePrefix: local-
