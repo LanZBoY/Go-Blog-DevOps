@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: go-blog-api
-        image: go-blog:dev
+        image: go-blog-api:dev-20250722T023708Z
         resources:
           requests:
             memory: "128Mi"
