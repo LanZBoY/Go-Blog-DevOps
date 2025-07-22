@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: go-blog-multi-ns
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/LanZBoY/Go-Blog-DevOps.git
+        revision: main
+        directories:
+          - path: go-blog/overlays/*
+  template:
+    metadata:
+      name: "go-blog-{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/LanZBoY/Go-Blog-DevOps.git
+        targetRevision: main
+        path: "go-blog/overlays/{{path.basename}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{path.basename}}"  # 對應 dev/staging/prod
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
