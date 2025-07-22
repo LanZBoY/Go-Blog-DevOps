@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: go-blog-config
+  namespace: go-blog
+data:
+  SERVICE_NAME: GoBlogAPI
+  MOGNO_DATABASE: Blog
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: go-blog-secret
+  namespace: go-blog
+type: Opaque
+data:
+  MONGO_URI: bW9uZ29kYjovL1dlblRlZTpqcDR3dTZAbW9uZ28tZGI6MjcwMTc=
+  JWT_SECRET: MWZjZGU0MmRkNjYxM2NjNmYzMWE2MDllNDdjMzNmNTMzMTIzN2M1OGM0ODcwZjdiNzk1ODg5MTMwZDBhNTgzMmE4OWRkM2RkZjliY2U1MTU0NDdjMjg3NjRiYmYxOGMyZDg2NWE4ZTcxMTE2Mzg4ZjdlYzc5NDUyNGYyZWNjN2E=
+

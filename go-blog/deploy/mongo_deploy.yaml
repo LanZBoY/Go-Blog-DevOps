@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-db
+  namespace: go-blog
+spec:
+  selector:
+    matchLabels:
+      app: mongo-db
+  template:
+    metadata:
+      labels:
+        app: mongo-db
+    spec:
+      containers:
+      - name: mongo-db
+        image: mongo:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 27017
+        envFrom:
+          - secretRef:
+              name: mogno-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-db
+  namespace: go-blog
+spec:
+  type: ClusterIP
+  selector:
+    app: mongo-db
+  ports:
+  - port: 27017
+    targetPort: 27017

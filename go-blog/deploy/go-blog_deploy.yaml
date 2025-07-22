@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-blog-api
+  namespace: go-blog
+spec:
+  selector:
+    matchLabels:
+      app: go-blog-api
+  template:
+    metadata:
+      labels:
+        app: go-blog-api
+    spec:
+      containers:
+      - name: go-blog-api
+        image: go-blog:dev
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "25m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        envFrom:
+          - secretRef:
+              name: go-blog-secret
+          - configMapRef:
+              name: go-blog-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-blog-api-ex-svc
+  namespace: go-blog
+spec:
+  type: LoadBalancer
+  selector:
+    app: go-blog-api
+  ports:
+  - port: 8080
+    targetPort: 8080
