@@ -8,6 +8,6 @@ resources:
 
 images:
   - name: go-blog-api
-    newTag: go-blog-api:dev-20250722T024931Z
+    newTag: dev-20250722T024931Z
   - name: mongo
     newTag: latest
